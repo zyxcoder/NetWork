@@ -17,7 +17,7 @@ val apiService: ApiService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
 
 class RetrofitManager : NetWorkManager() {
     companion object {
-        private const val CACHE_MAX_SIZE: Long = 1024 * 1024 * 100//100M
+        private const val CACHE_MAX_SIZE: Long = 1024 * 1024 * 50//50M
         private const val CACHE_MAX_TIME: Long = 60 * 60 * 24//最多缓存1天
         private const val DEFAULT_NET_TIME: Long = 10 //默认网络时间
         val INSTANCE: RetrofitManager by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
