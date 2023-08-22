@@ -4,6 +4,8 @@ import com.techstudio.sg.tss.CachingControlInterceptor
 import com.techstudio.sg.tss.NetWorkManager
 import okhttp3.Cache
 import okhttp3.OkHttpClient
+import retrofit2.Converter
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
 
@@ -41,4 +43,6 @@ class RetrofitManager : NetWorkManager() {
             writeTimeout(DEFAULT_NET_TIME, TimeUnit.SECONDS)
         }
     }
+
+    override fun setConverterFactory(): Converter.Factory =GsonConverterFactory.create()
 }

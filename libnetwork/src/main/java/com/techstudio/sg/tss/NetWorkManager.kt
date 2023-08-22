@@ -2,8 +2,8 @@ package com.techstudio.sg.tss
 
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.OkHttpClient
+import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Create by zyx_coder on 2023/7/6
@@ -20,7 +20,7 @@ abstract class NetWorkManager {
             .client(RetrofitUrlManager.getInstance().with(OkHttpClient.Builder()).apply {
                 setHttpClientBuilder(this)
             }.build())
-        return retrofitBuilder.addConverterFactory(GsonConverterFactory.create()).build()
+        return retrofitBuilder.addConverterFactory(setConverterFactory()).build()
             .create(serviceClass)
     }
 
@@ -45,4 +45,6 @@ abstract class NetWorkManager {
     fun switchBaseUrl(newBaseUrl: String) {
         RetrofitUrlManager.getInstance().setGlobalDomain(newBaseUrl)
     }
+
+    abstract fun setConverterFactory(): Converter.Factory
 }
